@@ -62,10 +62,35 @@ export default class Tile extends Component {
       onClick,
       onMouseOver,
       style,
+      tileWrapperRole,
       tileDisabled,
       view,
     } = this.props;
     const { tileClassName, tileContent } = this.state;
+
+    if (tileWrapperRole) {
+      return (
+        <div className={clsx(classes, tileClassName)} style={style} role={tileWrapperRole}>
+          <button
+            className="react-calendar__tile--inner"
+            disabled={
+              (minDate && minDateTransform(minDate) > date) ||
+              (maxDate && maxDateTransform(maxDate) < date) ||
+              (tileDisabled && tileDisabled({ activeStartDate, date, view }))
+            }
+            onClick={onClick && ((event) => onClick(date, event))}
+            onFocus={onMouseOver && (() => onMouseOver(date))}
+            onMouseOver={onMouseOver && (() => onMouseOver(date))}
+            type="button"
+            aria-label={formatAbbr(locale, date)}
+            style={{ width: '100%' }}
+          >
+            {formatAbbr ? <abbr>{children}</abbr> : children}
+            {tileContent}
+          </button>
+        </div>
+      );
+    }
 
     return (
       <button
@@ -80,8 +105,9 @@ export default class Tile extends Component {
         onMouseOver={onMouseOver && (() => onMouseOver(date))}
         style={style}
         type="button"
+        aria-label={formatAbbr(locale, date)}
       >
-        {formatAbbr ? <abbr aria-label={formatAbbr(locale, date)}>{children}</abbr> : children}
+        {formatAbbr ? <abbr>{children}</abbr> : children}
         {tileContent}
       </button>
     );
@@ -94,4 +120,5 @@ Tile.propTypes = {
   formatAbbr: PropTypes.func,
   maxDateTransform: PropTypes.func.isRequired,
   minDateTransform: PropTypes.func.isRequired,
+  tileWrapperRole: PropTypes.string,
 };

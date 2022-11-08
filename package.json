@@ -15,6 +15,7 @@
     "build-js-esm": "BABEL_ENV=production-esm babel src -d dist/esm --ignore \"**/*.spec.js,**/*.spec.jsx\"",
     "build-js-cjs": "BABEL_ENV=production-cjs babel src -d dist/cjs --ignore \"**/*.spec.js,**/*.spec.jsx\"",
     "build-styles": "lessc ./dist/Calendar.less ./dist/Calendar.css",
+    "build-local": "yarn build && cd sample && rm -rf node_modules && yarn && cd ..",
     "clean": "rimraf dist",
     "copy-styles": "node ./copy-styles.js",
     "jest": "jest",

@@ -468,6 +468,7 @@ export default class Calendar extends Component {
       tileClassName,
       tileContent,
       tileDisabled,
+      tileWrapperRole,
     } = this.props;
     const { hover } = this;
 
@@ -488,6 +489,7 @@ export default class Calendar extends Component {
       tileClassName,
       tileContent,
       tileDisabled,
+      tileWrapperRole,
       value,
       valueType,
     };
@@ -701,6 +703,7 @@ Calendar.propTypes = {
   tileClassName: PropTypes.oneOfType([PropTypes.func, isClassName]),
   tileContent: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   tileDisabled: PropTypes.func,
+  tileWrapperRole: PropTypes.string,
   value: isLooseValue,
   view: isView,
 };
