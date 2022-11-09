@@ -20,7 +20,7 @@
     "copy-styles": "node ./copy-styles.js",
     "jest": "jest",
     "lint": "eslint sample src test --ext .jsx,.js",
-    "postinstall": "husky install",
+    "postinstall": "husky install || exit 0",
     "prepack": "yarn clean && yarn build",
     "prettier": "prettier --check . --cache",
     "test": "yarn lint && yarn prettier && yarn jest"
