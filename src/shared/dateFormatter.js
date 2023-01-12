@@ -40,7 +40,7 @@ function getSafeFormatter(options) {
 
 const formatDateOptions = { day: 'numeric', month: 'numeric', year: 'numeric' };
 const formatDayOptions = { day: 'numeric' };
-const formatLongDateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+const formatLongDateOptions = { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' };
 const formatMonthOptions = { month: 'long' };
 const formatMonthYearOptions = { month: 'long', year: 'numeric' };
 const formatShortWeekdayOptions = { weekday: 'short' };
